@@ -5,13 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fde-jesu <fde-jesu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/17 00:17:43 by mrudloff          #+#    #+#             */
-/*   Updated: 2023/06/19 23:21:30 by fde-jesu         ###   ########.fr       */
+/*   Created: 2023/06/21 22:45:26 by fde-jesu          #+#    #+#             */
+/*   Updated: 2023/06/21 23:39:32 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
 
 int	ft_strlen(char *str)
 {

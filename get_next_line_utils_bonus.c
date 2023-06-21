@@ -5,17 +5,16 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fde-jesu <fde-jesu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/19 23:38:43 by fde-jesu          #+#    #+#             */
-/*   Updated: 2023/06/20 14:42:51 by fde-jesu         ###   ########.fr       */
+/*   Created: 2023/06/21 22:45:18 by fde-jesu          #+#    #+#             */
+/*   Updated: 2023/06/21 23:43:31 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "get_next_line_bonus.h"
 
 int	ft_strlen(char	*str)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
 	if (!str)
@@ -27,7 +26,7 @@ int	ft_strlen(char	*str)
 
 char	*ft_strchr(char *s, int c)
 {
-	size_t	i;
+	int	i;
 
 	if (!s)
 		return (NULL);
@@ -65,10 +64,10 @@ char	*ft_strjoin(char *start, char *buff)
 	return (ptr);
 }
 
- char	*ft_join(char *dest, char *s1, char *s2)
+char	*ft_join(char *dest, char *s1, char *s2)
 {
-	size_t	i;
-	size_t	j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (s1 && s1[i])

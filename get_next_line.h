@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fde-jesu <fde-jesu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/17 00:17:20 by mrudloff          #+#    #+#             */
-/*   Updated: 2023/06/21 22:38:44 by fde-jesu         ###   ########.fr       */
+/*   Created: 2023/06/21 22:45:38 by fde-jesu          #+#    #+#             */
+/*   Updated: 2023/06/21 23:42:56 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,10 @@
 
 # include <stdlib.h>
 # include <unistd.h>
- #include <fcntl.h>
-  #include <stdio.h>
-/*  #ifndef BUFFER_SIZE
-#define BUFFER_SIZE 1  // apaga isto. n e permitido em amndatorio
-#endif */
- 
-int	ft_strlen(char *str);
+# include <fcntl.h>
+# include <stdio.h>
 
+int		ft_strlen(char *str);
 char	*ft_read_the_line(int fd, char *fd_str);
 char	*get_next_line(int fd);
 char	*ft_readed_line(char *src);

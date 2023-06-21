@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fde-jesu <fde-jesu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/20 16:32:29 by fde-jesu          #+#    #+#             */
-/*   Updated: 2023/06/21 19:03:37 by fde-jesu         ###   ########.fr       */
+/*   Created: 2023/06/21 22:45:05 by fde-jesu          #+#    #+#             */
+/*   Updated: 2023/06/21 23:25:41 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ char	*ft_readed_line(char *fd_current)
 {
 	int		i;
 	char	*line;
+
 	if (fd_current[0] == 0)
 		return (NULL);
 	i = 0;
@@ -29,16 +30,11 @@ char	*ft_readed_line(char *fd_current)
 	i = 0;
 	while (fd_current[i] && fd_current[i] != '\n')
 	{
-	//	printf("\nfd_current[%d] = %c\n", i, fd_current[i]);
-		line[i] = fd_current[i];//////////////
-	//	printf("\nline[%d] = %c\n", i , line[i]);
+		line[i] = fd_current[i];
 		i++;
 	}
 	if (fd_current[i] == '\n')
-	{	
-		line[i] = '\n';
-		i++;
-	}
+		line[i++] = '\n';
 	line[i] = '\0';
 	return (line);
 }
@@ -58,52 +54,48 @@ char	*ft_move_start(char	*fd_start)
 		return (NULL);
 	}
 	if (fd_start[i] == '\n')
-		i++;
+	i++;
 	new_buff = (char *)malloc((1 + ft_strlen(fd_start) - i) * (sizeof(char *)));
 	if (!new_buff)
 		return (NULL);
-	j = 0;
-	while (fd_start[i + j])
-	{
+	j = -1;
+	while (fd_start[i + j++])
 		new_buff[j] = fd_start[i + j];
-		j++;
-	}
 	new_buff[j] = '\0';
 	free(fd_start);
 	return (new_buff);
 }
 
- char	*ft_read_the_line(int fd, char *fd_str) 
+char	*ft_read_the_line(int fd, char *fd_str)
 {
-	int n_bytes;
-	char *buff;
+	int		n_bytes;
+	char	*buff;
 
 	n_bytes = 1;
 	buff = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (!buff)
 		return (NULL);
-		//int i = 0;
-	while ((ft_strchr(fd_str, '\n') == NULL)  && n_bytes != 0) 
+	while ((ft_strchr(fd_str, '\n') == NULL) && n_bytes != 0)
 	{
-		//printf("\nfd str - %s, buff - %s  and i = %d, \n",fd_strs[fd], buff, i++);
 		n_bytes = read(fd, buff, BUFFER_SIZE);
-			if (n_bytes == -1)
-			{
-				free(buff);
-				free(fd_str);
-				return (NULL);
-			}
+		if (n_bytes == -1)
+		{
+			free(buff);
+			free(fd_str);
+			return (NULL);
+		}
 		buff[n_bytes] = '\0';
-		fd_str = ft_strjoin(fd_str, buff); // this is my get_next_line
+		fd_str = ft_strjoin(fd_str, buff);
 	}
 	free(buff);
 	return (fd_str);
 }
 
 char	*get_next_line(int fd)
-{                   
+{
 	static char	*fd_strs[1024] = {NULL};
-	char *line;
+	char		*line;
+
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	fd_strs[fd] = ft_read_the_line(fd, fd_strs[fd]);
@@ -111,28 +103,26 @@ char	*get_next_line(int fd)
 		return (NULL);
 	line = ft_readed_line(fd_strs[fd]);
 	fd_strs[fd] = ft_move_start(fd_strs[fd]);
-	//printf(".%s.\t", line);
-	//printf(".%s.", fd_strs[fd]);
-	//printf("\nhere2\n");
 	return (line);
-} 
+}
+
+// int main()
+// {
+// 	char *str;
+// 	int fd;
+// 	fd = open("some.txt", O_RDONLY);
+// 	str = (char *)1;
+// 	while(str != NULL)
+// 	{
+// 		str = get_next_line(fd);
+// 		printf("%s", str);
+// 		free(str);	
+// 	}
+// 	return (0);
+// }  
+
 /* 
- int main()
-{
-	char *str;
-	int fd;
-	fd = open("some.txt", O_RDONLY);
-	str = (char *)1;
-	while(str != NULL)
-	{
-		str = get_next_line(fd);
-		printf("%s", str);
-		free(str);	
-	}
-	return (0);
-}  */
- 
-/*    int main()
+int main()
 {
 	char *str1;
 	char  *str2;
@@ -178,13 +168,5 @@ char	*get_next_line(int fd)
 		printf("%s\n", str3);
 		free(str3);
 	}	
-	printf("------------------------------2\n");
-	while (str2 != NULL)
-	{
-		str2 = get_next_line(fd2);
-		printf("%s\n", str2);
-		free(str2);
-	}
-
 	return (0);
-}  */
+}   */
