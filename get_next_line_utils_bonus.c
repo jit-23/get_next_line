@@ -54,7 +54,7 @@ char	*ft_strjoin(char *start, char *buff)
 		start = (char *)malloc(1 * sizeof(char));
 		start[0] = '\0';
 	}
-	if (!start || !buff)
+i	if (!buff)
 		return (NULL);
 	ptr = (char *)malloc(1 + ft_strlen(start) + ft_strlen(buff) * sizeof(char));
 	if (!ptr)

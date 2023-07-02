@@ -105,3 +105,19 @@ char	*get_next_line(int fd)
 	fd_str = ft_move_start(fd_str);
 	return (line);
 }
+
+int main()
+{
+	int fd;
+	fd = open("lol2.txt", O_RDONLY);
+	char *ptr;
+	ptr = (char *)1;
+	while (ptr != NULL)
+	{
+		ptr = get_next_line(fd);
+		printf("%s", ptr);
+		free(ptr);
+	}
+	close(fd);
+	return(0);
+}
