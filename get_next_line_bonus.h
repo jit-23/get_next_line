@@ -18,6 +18,12 @@
 # include <fcntl.h>
 # include <stdio.h>
 
+
+#ifndef BUFFER_SIZE
+#define BUFFER_SIZE 42
+#endif
+
+
 int		ft_strlen(char *str);
 char	*get_next_line(int fd);
 char	*ft_readed_line(char *src);
